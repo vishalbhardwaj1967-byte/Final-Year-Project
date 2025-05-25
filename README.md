@@ -1,67 +1,83 @@
-# 💡 AI-Powered Personal Finance Tracker
+# 🎓 Final Year Project: AI-Powered Personal Finance Tracker
 
-An intelligent and user-centric platform designed to streamline and automate financial management — without relying on traditional bank integrations. Built using modern AI/ML techniques and natural language interfaces, this solution enables smarter financial decision-making through voice commands, receipt scanning, and predictive analytics.
-
----
-
-## 🧠 Overview
-
-In today’s fast-paced, digital-first world, many struggle with manual budgeting, tracking, and bank-dependent apps. This project offers a fresh approach — an AI-powered finance tracker that:
-
-- Extracts transaction data from receipts using **Tesseract OCR**
-- Categorizes spending using **FinBERT NLP**
-- Supports **voice-based logging** via **Web Speech API** and **Stanza**
-- Provides **AI-driven budget recommendations** using **Gradient Boosted Decision Trees**
-- Performs **financial forecasting** using **Prophet** and **LSTM models**
-- Manages **group/shared expenses**
-- Sends **bill reminders** using **Celery**
-- Displays **interactive dashboards and visualizations**
+A Smart, AI-driven platform for modern personal finance management — combining voice input, receipt scanning, machine learning, and predictive analytics to help users take control of their financial future.
 
 ---
 
-## ✨ Features
+## 📘 Abstract
 
-- 🧾 **Receipt Scanning** – Upload scanned receipts to extract transaction info via OCR.
-- 🗣️ **Voice Logging** – Log expenses using natural voice input.
-- 🔍 **NLP Categorization** – FinBERT classifies spending into intelligent categories.
-- 📈 **Forecasting** – Prophet and LSTM forecast future income and expenses.
-- 📊 **Insights Dashboard** – Visualizations for spending trends and budget status.
-- 👥 **Group Expense Module** – Track shared expenses with friends/family.
-- ⏰ **Reminders** – Get bill notifications and payment alerts via Celery tasks.
-- 🔐 **Secure Access** – Session-based authentication ensures data privacy.
+In today's fast-paced digital world, many individuals struggle with managing their finances due to the limitations of traditional budgeting tools and manual tracking. Our project — **AI-Powered Personal Finance Tracker** — presents an intelligent, accessible, and bank-independent solution for effortless financial management.
+
+This platform uses cutting-edge technologies like **Tesseract OCR** for extracting transaction data from receipts, **FinBERT NLP** for intelligent expense categorization, and supports **voice-based transaction logging** via the **Web Speech API** and **Stanza**. For smarter budgeting and forecasting, it integrates **Gradient Boosted Decision Trees**, **Prophet**, and **LSTM models**.
+
+Key modules include **Group Expense Management** for shared finances, and **Celery-based Reminders** to notify users about bills. The system is built with a **Django backend** and a responsive **HTML + Tailwind CSS** frontend.
+
+---
+
+## 🚀 Key Features
+
+- 🧾 **Receipt Scanning:** Extract transaction data using Tesseract OCR.
+- 🗣️ **Voice Logging:** Add expenses using voice input with Web Speech API and Stanza.
+- 📊 **Smart Categorization:** FinBERT classifies expenses into intelligent categories.
+- 📈 **Forecasting Engine:** Uses Prophet + LSTM for financial trend prediction.
+- 💰 **AI Budgeting:** Gradient Boosted Decision Trees generate budget suggestions.
+- 👥 **Group Expenses:** Track and manage shared spending with others.
+- ⏰ **Bill Reminders:** Scheduled reminders using Celery and Redis.
+- 🖥️ **Dashboard:** Visualizes spending, forecasts, and trends for informed decisions.
+- 🔐 **Authentication:** Session-based login system ensures secure access.
 
 ---
 
 ## 🛠️ Tech Stack
 
-### 🔗 Frontend
-- **HTML5**
-- **Tailwind CSS**
-- **JavaScript**
-- **Web Speech API** (voice input)
-
-### ⚙️ Backend
-- **Python**
-- **Django** (main web framework)
-- **Celery + Redis** (asynchronous task scheduling)
-- **Session-based Authentication**
-
-### 🧠 AI/ML & NLP
-- **Tesseract OCR** – Extract text from receipts
-- **FinBERT** – Expense category classification
-- **Stanza** – NLP processing of voice input
-- **Gradient Boosted Decision Trees** – Budget prediction
-- **Prophet + LSTM** – Time-series forecasting for financial trends
-- **Pickle** – ML model serialization
-
-### 💾 Database
-- **PostgreSQL**
+| Layer        | Technologies Used                                                                 |
+|--------------|------------------------------------------------------------------------------------|
+| Frontend     | HTML5, Tailwind CSS, JavaScript, Web Speech API                                   |
+| Backend      | Python, Django, Celery, Redis, SQLite                                              |
+| AI & ML      | Tesseract OCR, FinBERT (NLP), Stanza (NLP), Gradient Boosted Trees, Prophet, LSTM |                                |
+| Auth         | Django Sessions                                                                    |
 
 ---
 
-## 🚀 Installation & Setup
+## 📂 Folder Structure (Simplified)
+
+Final-Year-Project/
+├── finance_tracker/ # Django project folder
+├── templates/ # HTML templates
+├── static/ # Tailwind CSS, JS, images
+├── receipts/ # Uploaded receipt images
+├── models/ # Trained ML models (Pickle format)
+├── celery.py # Task scheduling setup
+├── requirements.txt # Dependencies
+└── README.md # Project documentation
+
+
+---
+
+## ⚙️ Setup Instructions
 
 1. **Clone the Repository**
    ```bash
    git clone https://github.com/sugapriya-k/Final-Year-Project.git
    cd Final-Year-Project
+2. **Create Virtual Environment**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+3. **Install Requirements**
+   ```bash
+   pip install -r requirements.txt
+   
+4. **Run Redis Server**
+    ```bash
+        redis-server
+
+5. **Start Celery Worker**
+    ```bash
+    celery -A finance_tracker worker --loglevel=info
+
+6. **Run Django Server**
+    ```bash
+    python manage.py migrate
+    python manage.py runserver
